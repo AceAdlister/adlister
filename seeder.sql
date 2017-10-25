@@ -1,10 +1,10 @@
 insert into users(username, email, password)
 values
-('admin','SuperUser@Domain','LockDown'),
-('root', 'SQLInjector@Domain','L33T'),
-('Mary Sue','SuperSnowflake@MyDomain','2perfect'),
-('Larry Milam','TruckOn@domain','Texas4Ever'),
-('Ben Foreman','ConstructorJobs@domain','BuildIt');
+('admin','SuperUser@Domain','hash1'),
+('root', 'SQLInjector@Domain','hash2'),
+('Mary Sue','SuperSnowflake@MyDomain','hash3'),
+('Larry Milam','TruckOn@domain','hash4'),
+('Ben Foreman','ConstructorJobs@domain','hash5');
 
 insert into ads(user_id, title, description)
 VALUES
