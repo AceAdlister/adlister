@@ -1,4 +1,4 @@
 .idea
 *.iml
 /target
-/src/main/java/com/codeup/adlister/dao/Config2.java
+/src/main/java/com/codeup/adlister/dao/Config.java
