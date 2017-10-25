@@ -13,7 +13,12 @@ import java.io.IOException;
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
 public class CreateAdServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
+      Object user =request.getSession().getAttribute("user");
+      if (user == null) {
+          response.sendRedirect("/login");
+          return;
+      }
+      request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
             .forward(request, response);
   }
 
