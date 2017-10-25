@@ -20,7 +20,8 @@ public class CreateAdServlet extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Object user = request.getSession().getAttribute("user");
     if (user == null) {
-
+        response.sendRedirect("/login");
+        return;
     }
 
     Ad ad = new Ad(
