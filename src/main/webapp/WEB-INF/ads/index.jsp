@@ -16,6 +16,7 @@
         <div class="col-md-6">
             <h2>${ad.title}</h2>
             <p>${ad.description}</p>
+            <a href="/view-ad?ID=${ad.id}">Go to AD</a>
         </div>
     </c:forEach>
 </div>

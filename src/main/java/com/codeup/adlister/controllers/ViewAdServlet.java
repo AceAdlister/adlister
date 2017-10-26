@@ -28,7 +28,7 @@ public class ViewAdServlet extends HttpServlet {
     request.setAttribute("ad", DaoFactory.getAdsDao().singleAd(adID));
     request.getRequestDispatcher("/WEB-INF/ads/view-ad.jsp").forward(request, response);
 
-    System.out.println(DaoFactory.getAdsDao().usersAds(adID));
+    System.out.println(DaoFactory.getAdsDao().singleAd(adID));
     System.out.println("HERE IS YOUR AD ID: " + adID);
 
   }
