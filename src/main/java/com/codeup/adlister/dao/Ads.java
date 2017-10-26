@@ -11,4 +11,6 @@ public interface Ads {
     List<Ad> usersAds(Long ID);
     // insert a new ad and return the new ad's id
     Long insert(Ad ad);
+    // get single ad to display
+    Ad singleAd(Long ID);
 }
