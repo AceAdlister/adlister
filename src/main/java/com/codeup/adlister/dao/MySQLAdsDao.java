@@ -44,7 +44,6 @@ public class MySQLAdsDao implements Ads {
             stmt = connection.prepareStatement("SELECT * FROM ads WHERE user_id=?");
             stmt.setLong(1,ID);
             ResultSet rs = stmt.executeQuery();
-            rs.next();
             return createAdsFromResults(rs);
         }catch(SQLException e){
             throw new RuntimeException("Error retrieving the current users ads.", e);

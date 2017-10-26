@@ -20,8 +20,7 @@ public class ViewProfileServlet extends HttpServlet {
         System.out.println("Here is your ID for View Profile Servlet: "+ ID);
         request.setAttribute("ads", DaoFactory.getAdsDao().usersAds(ID));
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
-        System.out.println("Here are the attribute names: ");
-        System.out.println(request.getAttributeNames());
+
 
     }
 }
