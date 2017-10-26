@@ -50,6 +50,18 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    public List<Ad> singleAd(Long ID){
+        PreparedStatement stmt = null;
+        try{
+            stmt = connection.prepareStatement("SELECT * FROM ads WHERE id=?");
+            stmt.setLong(1,ID);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        }catch(SQLException e){
+            throw new RuntimeException("Error retrieving the single ad.", e);
+        }
+    }
+
     @Override
     public Long insert(Ad ad) {
 //        if (request.getSession == null) {
