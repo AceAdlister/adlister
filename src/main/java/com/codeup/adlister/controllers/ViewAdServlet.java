@@ -23,14 +23,13 @@ public class ViewAdServlet extends HttpServlet {
   }
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    Long adID = 0L;
+    Long adID = Long.parseLong(request.getParameter("ID"));
 
-    adID = Long.parseLong(request.getParameter("ID"));
-
-    request.setAttribute("adID", DaoFactory.getAdsDao().usersAds(adID));
-    request.getRequestDispatcher("/WEB-INF/view-ad.jsp?").forward(request, response);
+    request.setAttribute("ad", DaoFactory.getAdsDao().singleAd(adID));
+    request.getRequestDispatcher("/WEB-INF/ads/view-ad.jsp").forward(request, response);
 
     System.out.println(DaoFactory.getAdsDao().usersAds(adID));
+    System.out.println("HERE IS YOUR AD ID: " + adID);
 
   }
 
