@@ -48,7 +48,7 @@ public class EditProfileServlet extends HttpServlet {
                 || (!password.equals(passwordConfirmation));
 
         if (inputHasErrors) {
-            response.sendRedirect("/register");
+            response.sendRedirect("/profile_mod");
             return;
         }
 
@@ -59,8 +59,8 @@ public class EditProfileServlet extends HttpServlet {
 
         // create and save a new user
         User user = new User(username, email, firstName, lastName, streetAddress, state, zipcode, phone, hash);
-        DaoFactory.getUsersDao().insert(user);
-        response.sendRedirect("/login");
+        DaoFactory.getUsersDao().update(user);
+        response.sendRedirect("/profile");
 
 
     }
