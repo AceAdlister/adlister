@@ -24,4 +24,3 @@ VALUES
 (1,'Anouncment', 'Please stop advertising waffles on our site',
  '000 Drive','Tx','11111');
 
-#
