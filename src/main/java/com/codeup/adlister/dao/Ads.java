@@ -13,4 +13,6 @@ public interface Ads {
     Long insert(Ad ad);
     // get single ad to display
     Ad singleAd(Long ID);
+    // search results
+    List<Ad> searchAds(String searchQuery);
 }
