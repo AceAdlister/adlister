@@ -11,7 +11,7 @@
 
     <div class="container">
         <a href="/profile_mod">Button to modify profile information</a>
-        <h1>Welcome, ${sessionScope.user}!</h1>
+        <h1>Welcome, ${sessionScope.user.username}!</h1>
 
         <h3>Here are your ads!</h3>
         <c:forEach var="ad" items="${ads}">

@@ -29,7 +29,6 @@ public class RegisterServlet extends HttpServlet {
     String zipcode= request.getParameter("zip_code");
     String password = request.getParameter("password");
     String passwordConfirmation = request.getParameter("confirm_password");
-
     // validate input
     boolean inputHasErrors = username.isEmpty()
             || email.isEmpty()
@@ -38,7 +37,7 @@ public class RegisterServlet extends HttpServlet {
             || streetAddress.isEmpty()
             || state.isEmpty()
             || (zipcode.isEmpty() || zipcode.length()!=5)
-            || (phone.isEmpty() || phone.length()!=12)
+            || (phone.isEmpty() || phone.length()!=10)
             || password.isEmpty()
             || (!password.equals(passwordConfirmation));
 
