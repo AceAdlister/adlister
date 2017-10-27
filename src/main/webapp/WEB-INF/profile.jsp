@@ -10,7 +10,7 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="container">
-
+        <a>Button to modify profile information</a>
         <h1>Welcome, ${sessionScope.user}!</h1>
 
         <h3>Here are your ads!</h3>
