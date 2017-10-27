@@ -16,7 +16,7 @@ public class EditProfileServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-        request.getRequestDispatcher("/WEB-INF/.jsp")
+        request.getRequestDispatcher("/WEB-INF/profile-mod.jsp")
                 .forward(request, response);
     }
 

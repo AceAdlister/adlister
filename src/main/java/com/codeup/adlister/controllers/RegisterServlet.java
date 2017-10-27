@@ -21,12 +21,12 @@ public class RegisterServlet extends HttpServlet {
 
     String username = request.getParameter("username");
     String email = request.getParameter("email");
-    String firstName = request.getParameter("firstName");
-    String lastName = request.getParameter("lastName");
-    String streetAddress = request.getParameter("streetAddress");
+    String firstName = request.getParameter("first_name");
+    String lastName = request.getParameter("last_name");
+    String streetAddress = request.getParameter("street_address");
     String phone = request.getParameter("phone");
     String state= request.getParameter("state");
-    String zipcode= request.getParameter("zipcode");
+    String zipcode= request.getParameter("zip_code");
     String password = request.getParameter("password");
     String passwordConfirmation = request.getParameter("confirm_password");
 

@@ -10,6 +10,7 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
         <h1>Here you can edit your profile</h1>
+        <jsp:include page="partials/userforms.jsp"/>
     </div>
 </body>
 </html>
