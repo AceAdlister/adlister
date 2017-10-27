@@ -10,8 +10,8 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="container">
-
-        <h1>Welcome, ${sessionScope.user}!</h1>
+        <a href="/profile_mod">Button to modify profile information</a>
+        <h1>Welcome, ${sessionScope.user.username}!</h1>
 
         <h3>Here are your ads!</h3>
         <c:forEach var="ad" items="${ads}">

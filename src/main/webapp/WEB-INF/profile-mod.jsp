@@ -1,43 +1,44 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <jsp:include page="partials/head.jsp">
-        <jsp:param name="title" value="Register For Our Site!" />
+    <jsp:include page="/WEB-INF/partials/head.jsp">
+        <jsp:param name="title" value="Edit Your Profile" />
     </jsp:include>
 </head>
 <body>
-    <jsp:include page="partials/navbar.jsp" />
+    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
-        <h1>Please fill in your information.</h1>
-        <form action="/register" method="post">
+        <h1>Here you can edit your profile</h1>
+        <form action="/profile_mod" method="post">
             <div class="form-group">
                 <label for="username">Username</label>
-                <input id="username" name="username" class="form-control" type="text">
+                <input id="username" name="username" class="form-control" type="text" value="${user.username}">
             </div>
             <div class="form-group">
                 <label for="first_name">First Name</label>
-                <input id="first_name" name="first_name" class="form-control" type="text">
+                <input id="first_name" name="first_name" class="form-control" type="text" value="${user.firstName}">
             </div>
             <div class="form-group">
                 <label for="last_name">Last Name</label>
-                <input id="last_name" name="last_name" class="form-control" type="text">
+                <input id="last_name" name="last_name" class="form-control" type="text" value="${user.lastName}">
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input id="email" name="email" class="form-control" type="text">
+                <input id="email" name="email" class="form-control" type="text" value="${user.email}">
             </div>
             <div class="form-group">
                 <label for="street_address">Address</label>
-                <input id="street_address" name="street_address" class="form-control" type="text">
+                <input id="street_address" name="street_address" class="form-control" type="text" value="${user.streetAddress}">
             </div>
             <div class="form-group">
                 <label for="zip_code">Zipcode(#####)</label>
-                <input id="zip_code" name="zip_code" class="form-control" type="text">
+                <input id="zip_code" name="zip_code" class="form-control" type="text" value="${user.zipcode}">
             </div>
             <div class="form-group">
                 <label for="state" class="col-sm-2 control-label">State</label>
                 <div class="col-sm-10">
-                    <select class="form-control" id="state" name="state">
+                    <select class="form-control" id="state" name="state" values="${user.state}">
                         <option value="">N/A</option>
                         <option value="AK">Alaska</option>
                         <option value="AL">Alabama</option>
@@ -96,7 +97,7 @@
             </div>
             <div class="form-group">
                 <label for="phone">Phone Number(##########)</label>
-                <input id="phone" name="phone" class="form-control" type="text">
+                <input id="phone" name="phone" class="form-control" type="text" value="${user.phone}">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
