@@ -16,7 +16,8 @@
         <div class="col-md-6">
                 <%--<a href="/view-ad?ID="+${ID}>--%>
             <h2>${ad.title}</h2>
-                <%--</a>--%>
+                    <h4>${ad.address}</h4>
+                    <h4>${ad.state}, ${ad.zip_code}</h4>
             <p>${ad.description}</p>
         </div>
     </c:forEach>

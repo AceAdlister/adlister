@@ -85,23 +85,6 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-    private Ad extractAd(ResultSet rs) throws SQLException {
-        return new Ad(
-            rs.getLong("id"),
-            rs.getLong("user_id"),
-            rs.getString("title"),
-            rs.getString("description")
-        );
-    }
-
-    private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
-        List<Ad> ads = new ArrayList<>();
-        while (rs.next()) {
-            ads.add(extractAd(rs));
-        }
-        return ads;
-    }
-
     public List<Ad> searchAds(String searchTerms){
         PreparedStatement stmt = null;
         try{
@@ -114,5 +97,29 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error retrieving the search process...", e);
         }
 
+    }
+
+    public void update(Ad ad){
+
+    }
+
+    private Ad extractAd(ResultSet rs) throws SQLException {
+        return new Ad(
+            rs.getLong("id"),
+            rs.getLong("user_id"),
+            rs.getString("title"),
+            rs.getString("description"),
+                rs.getString("address"),
+                rs.getString("state"),
+                rs.getString("zip_code")
+        );
+    }
+
+    private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
+        List<Ad> ads = new ArrayList<>();
+        while (rs.next()) {
+            ads.add(extractAd(rs));
+        }
+        return ads;
     }
 }
