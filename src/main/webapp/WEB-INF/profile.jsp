@@ -22,6 +22,7 @@
                     <h4>${ad.state}, ${ad.zip_code}</h4>
                 <p>${ad.description}</p>
                 <a href="/ads/edit_ad?ID=${ad.id}">edit ad</a>
+                <a href="/ads/delete_ad?ID=${ad.id}">delete</a>
             </div>
         </c:forEach>
     </div>

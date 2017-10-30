@@ -111,7 +111,18 @@ public class MySQLAdsDao implements Ads {
             stmt.setLong(6, ad.getId());
             stmt.executeUpdate();
         }catch(SQLException e){
-            throw new RuntimeException("Error editing user", e);
+            throw new RuntimeException("Error editing ad", e);
+        }
+    }
+
+    public void delete(Long id){
+        String query= "DELETE FROM ads WHERE id = ?";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1,id);
+            stmt.executeUpdate();
+        }catch(SQLException e){
+            throw new RuntimeException("Error deleting ad",e);
         }
     }
 
