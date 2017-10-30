@@ -15,16 +15,21 @@ import java.io.IOException;
 public class EditProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws IOException, ServletException{
-        Object user =request.getSession().getAttribute("user");
-        if (user == null) {
+        User sessionUser =(User)request.getSession().getAttribute("user");
+        // get user from the db DaoFactory.getUserDao().findById() or username
+
+        if (sessionUser == null) {
             response.sendRedirect("/login");
             return;
         }
+        User user=DaoFactory.getUsersDao().findByUsername(sessionUser.getUsername());
+        request.setAttribute("user",user);
         request.getRequestDispatcher("/WEB-INF/profile-mod.jsp")
                 .forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        User user =(User)request.getSession().getAttribute("user");
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String firstName = request.getParameter("first_name");
@@ -58,8 +63,8 @@ public class EditProfileServlet extends HttpServlet {
         String hash = BCrypt.hashpw(password, BCrypt.gensalt(numberOfRounds));
 
         // create and save a new user
-        User user = new User(username, email, firstName, lastName, streetAddress, state, zipcode, phone, hash);
-        DaoFactory.getUsersDao().update(user);
+        User userNew = new User(user.getId(),username, email, firstName, lastName, streetAddress, state, zipcode, phone, hash);
+        DaoFactory.getUsersDao().update(userNew);
         response.sendRedirect("/profile");
 
 

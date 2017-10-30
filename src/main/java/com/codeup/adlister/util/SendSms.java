@@ -22,7 +22,7 @@ public class SendSms {
 
   public static void main(String[] args) {
 
-    /*sendTxt("5125010416", "Test SMS Message Send");*/
+    /*sendTxt("5124609103", "Test message from Chase's Java App");*/
 
   }
 
