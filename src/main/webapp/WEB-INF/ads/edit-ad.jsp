@@ -7,8 +7,9 @@
     </jsp:include>
 </head>
 <body>
+<jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<h1>Edit your ad.</h1>
 <div class="container">
-    <h1>Edit your ad.</h1>
     <form action="/ads/edit-ad" method="post">
         <div class="form-group">
             <label for="title">Title</label>
