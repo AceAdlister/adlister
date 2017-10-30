@@ -20,6 +20,7 @@
                 <h2>${ad.title}</h2>
                 <%--</a>--%>
                 <p>${ad.description}</p>
+                <a href="/edit_ad">edit ad</a>
             </div>
         </c:forEach>
     </div>
