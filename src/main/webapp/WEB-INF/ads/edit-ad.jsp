@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>Create a new Ad</h1>
+    <h1>Edit your ad.</h1>
     <form action="/ads/edit-ad" method="post">
         <div class="form-group">
             <label for="title">Title</label>
