@@ -10,7 +10,7 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <h1>Edit your ad.</h1>
 <div class="container">
-    <form action="/ads/edit-ad" method="post">
+    <form action="/ads/edit_ad?ID=${ad.id}" method="post">
         <div class="form-group">
             <label for="title">Title</label>
             <input id="title" name="title" class="form-control" type="text" value="${ad.title}">
@@ -80,8 +80,8 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="zipcode">zipcode</label>
-            <input id="zipcode" name="zipcode" class="form-control" type="text" value="${ad.zip_code}">
+            <label for="zip_code">zipcode</label>
+            <input id="zip_code" name="zip_code" class="form-control" type="text" value="${ad.zip_code}">
         </div>
         <div class="form-group">
             <label for="description">Description</label>
