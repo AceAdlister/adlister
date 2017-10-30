@@ -15,6 +15,8 @@
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
             <h2>${ad.title}</h2>
+            <h4>${ad.address}</h4>
+            <h4>${ad.state}, ${ad.zip_code}</h4>
             <p>${ad.description}</p>
             <a href="/view-ad?ID=${ad.id}">Go to AD</a>
         </div>
