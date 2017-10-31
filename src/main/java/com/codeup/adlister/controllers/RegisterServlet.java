@@ -44,16 +44,57 @@ public class RegisterServlet extends HttpServlet {
 //            || password.isEmpty()
 //            || (!password.equals(passwordConfirmation));
 
-//    if (inputHasErrors) {
       HashMap<String, String> errors= new HashMap<>();
 //      Set up tags
       if(username ==null || username.equalsIgnoreCase("")){
-          errors.put("username","The username is empty");
+          errors.put("username","The username is empty.");
       }
-//    }
-//    System.out.println(errors.size());
-//    System.out.println(username);
-//    return;
+
+      if(firstName==null ||firstName.equalsIgnoreCase("")){
+          errors.put("firstName","The First Name is empty.");
+      }
+
+      if(lastName==null || lastName.equalsIgnoreCase("")){
+          errors.put("lastName","The Last Name is empty.");
+      }
+
+      if(email ==null || email.equalsIgnoreCase("")){
+          errors.put("email","The email is empty.");
+      }else if (!email.contains("@")){
+          errors.put("email","The email does not have a valid domain.");
+      }
+
+      if(streetAddress==null || streetAddress.equalsIgnoreCase("")){
+          errors.put("address","The Street Address is empty.");
+      }
+
+      if(state==null || state.equalsIgnoreCase("")){
+          errors.put("state","The State was not selected");
+      }
+
+      if(zipcode==null || zipcode.equalsIgnoreCase("")){
+          errors.put("zipcode","The Zipcode is empty.");
+      }else if(zipcode.length()!=5 || isNotNumeric(zipcode)){
+          errors.put("zipcode","The Zipcode is not 5 numbers.");
+      }
+
+      if(phone==null || phone.equalsIgnoreCase("")){
+          errors.put("phone","The Phone Number is empty.");
+      }else if(phone.length()!=10 || isNotNumeric(phone)){
+          errors.put("phone","The Phone Number is not 10 numbers.");
+      }
+
+      if(password==null ||password.equalsIgnoreCase("")){
+          errors.put("password","The Password is empty");
+      }
+
+      if(!password.equals(passwordConfirmation)){
+          errors.put("nomatch","The Passwords do not match.");
+      }
+
+
+
+//      forward tags
       if(errors.size()!=0) {
         request.setAttribute("errors", errors);
       request.getRequestDispatcher("/WEB-INF/register.jsp")
@@ -72,4 +113,13 @@ public class RegisterServlet extends HttpServlet {
       }
 
   }
+
+    private boolean isNotNumeric(String zipcode) {
+      try{
+          int result=Integer.parseInt(zipcode);
+          return false;
+      }catch(NumberFormatException e){
+          return true;
+      }
+    }
 }
