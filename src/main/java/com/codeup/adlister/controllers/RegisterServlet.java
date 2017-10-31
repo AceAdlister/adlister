@@ -74,13 +74,13 @@ public class RegisterServlet extends HttpServlet {
 
       if(zipcode==null || zipcode.equalsIgnoreCase("")){
           errors.put("zipcode","The Zipcode is empty.");
-      }else if(zipcode.length()!=5 || isNotNumeric(zipcode)){
+      }else if(zipcode.length()!=5 && isNotNumeric(zipcode)){
           errors.put("zipcode","The Zipcode is not 5 numbers.");
       }
 
       if(phone==null || phone.equalsIgnoreCase("")){
           errors.put("phone","The Phone Number is empty.");
-      }else if(phone.length()!=10 || isNotNumeric(phone)){
+      }else if(phone.length()!=10 && isNotNumeric(phone)){
           errors.put("phone","The Phone Number is not 10 numbers.");
       }
 
