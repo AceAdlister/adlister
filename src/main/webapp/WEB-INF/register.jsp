@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -14,9 +15,11 @@
                 <label for="username">Username</label>
                 <input id="username" name="username" class="form-control" type="text">
             </div>
-            <div class="alert alert-danger" role="alert">
-                <a href="#" class="alert-link">${errors.get("username")}</a>
-            </div>
+            <c:if test="${errors.get('username')!=null}">
+                <div class="alert alert-danger" role="alert">
+                    <a href="#" class="alert-link">${errors.get("username")}</a>
+                </div>
+            </c:if>
             <div class="form-group">
                 <label for="first_name">First Name</label>
                 <input id="first_name" name="first_name" class="form-control" type="text">
