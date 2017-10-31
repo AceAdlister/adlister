@@ -8,3 +8,5 @@
 
 <link rel="stylesheet" type="text/css"  href="/assets/css/styles.css">
 <link rel="icon" href="/assets/images/dog_paw.png">
+
+<link rel="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js">
