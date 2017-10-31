@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -14,26 +15,58 @@
                 <label for="username">Username</label>
                 <input id="username" name="username" class="form-control" type="text">
             </div>
+            <c:if test="${errors.get('username')!=null}">
+                <div class="alert alert-danger" role="alert">
+                    <a href="#" class="alert-link">${errors.get("username")}</a>
+                </div>
+            </c:if>
             <div class="form-group">
                 <label for="first_name">First Name</label>
                 <input id="first_name" name="first_name" class="form-control" type="text">
             </div>
+            <c:if test="${errors.get('firstName')!=null}">
+                <div class="alert alert-danger" role="alert">
+                    <a href="#" class="alert-link">${errors.get("firstName")}</a>
+                </div>
+            </c:if>
             <div class="form-group">
                 <label for="last_name">Last Name</label>
                 <input id="last_name" name="last_name" class="form-control" type="text">
             </div>
+            <c:if test="${errors.get('lastName')!=null}">
+                <div class="alert alert-danger" role="alert">
+                    <a href="#" class="alert-link">${errors.get("lastName")}</a>
+                </div>
+            </c:if>
+
             <div class="form-group">
                 <label for="email">Email</label>
                 <input id="email" name="email" class="form-control" type="text">
             </div>
+            <c:if test="${errors.get('email')!=null}">
+                <div class="alert alert-danger" role="alert">
+                    <a href="#" class="alert-link">${errors.get("email")}</a>
+                </div>
+            </c:if>
+
             <div class="form-group">
                 <label for="street_address">Address</label>
                 <input id="street_address" name="street_address" class="form-control" type="text">
             </div>
+            <c:if test="${errors.get('address')!=null}">
+                <div class="alert alert-danger" role="alert">
+                    <a href="#" class="alert-link">${errors.get("address")}</a>
+                </div>
+            </c:if>
             <div class="form-group">
                 <label for="zip_code">Zipcode(#####)</label>
                 <input id="zip_code" name="zip_code" class="form-control" type="text">
             </div>
+            <c:if test="${errors.get('zipcode')!=null}">
+                <div class="alert alert-danger" role="alert">
+                    <a href="#" class="alert-link">${errors.get("zipcode")}</a>
+                </div>
+            </c:if>
             <div class="form-group">
                 <label for="state" class="col-sm-2 control-label">State</label>
                 <div class="col-sm-10">
@@ -94,18 +127,38 @@
                     </select>
                 </div>
             </div>
+            <c:if test="${errors.get('state')!=null}">
+                <div class="alert alert-danger" role="alert">
+                    <a href="#" class="alert-link">${errors.get("state")}</a>
+                </div>
+            </c:if>
             <div class="form-group">
                 <label for="phone">Phone Number(##########)</label>
                 <input id="phone" name="phone" class="form-control" type="text">
             </div>
+            <c:if test="${errors.get('phone')!=null}">
+                <div class="alert alert-danger" role="alert">
+                    <a href="#" class="alert-link">${errors.get("phone")}</a>
+                </div>
+            </c:if>
             <div class="form-group">
                 <label for="password">Password</label>
                 <input id="password" name="password" class="form-control" type="password">
             </div>
+            <c:if test="${errors.get('password')!=null}">
+                <div class="alert alert-danger" role="alert">
+                    <a href="#" class="alert-link">${errors.get("password")}</a>
+                </div>
+            </c:if>
             <div class="form-group">
                 <label for="confirm_password">Confirm Password</label>
                 <input id="confirm_password" name="confirm_password" class="form-control" type="password">
             </div>
+            <c:if test="${errors.get('nomatch')!=null}">
+                <div class="alert alert-danger" role="alert">
+                    <a href="#" class="alert-link">${errors.get("nomatch")}</a>
+                </div>
+            </c:if>
             <input type="submit" class="btn btn-primary btn-block">
         </form>
     </div>
