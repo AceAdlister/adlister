@@ -14,6 +14,9 @@
                 <label for="username">Username</label>
                 <input id="username" name="username" class="form-control" type="text">
             </div>
+            <div class="alert alert-danger" role="alert">
+                <a href="#" class="alert-link">${errors.get("username")}</a>
+            </div>
             <div class="form-group">
                 <label for="first_name">First Name</label>
                 <input id="first_name" name="first_name" class="form-control" type="text">

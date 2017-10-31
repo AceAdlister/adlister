@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
@@ -17,7 +18,7 @@ public class RegisterServlet extends HttpServlet {
     request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
   }
 
-  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
     String username = request.getParameter("username");
     String email = request.getParameter("email");
@@ -29,33 +30,46 @@ public class RegisterServlet extends HttpServlet {
     String zipcode= request.getParameter("zip_code");
     String password = request.getParameter("password");
     String passwordConfirmation = request.getParameter("confirm_password");
+
+
     // validate input
-    boolean inputHasErrors = username.isEmpty()
-            || email.isEmpty()
-            || firstName.isEmpty()
-            || lastName.isEmpty()
-            || streetAddress.isEmpty()
-            || state.isEmpty()
-            || (zipcode.isEmpty() || zipcode.length()!=5)
-            || (phone.isEmpty() || phone.length()!=10)
-            || password.isEmpty()
-            || (!password.equals(passwordConfirmation));
+//    boolean inputHasErrors = username.isEmpty()
+//            || email.isEmpty()
+//            || firstName.isEmpty()
+//            || lastName.isEmpty()
+//            || streetAddress.isEmpty()
+//            || state.isEmpty()
+//            || (zipcode.isEmpty() || zipcode.length()!=5)
+//            || (phone.isEmpty() || phone.length()!=10)
+//            || password.isEmpty()
+//            || (!password.equals(passwordConfirmation));
 
-    if (inputHasErrors) {
-      response.sendRedirect("/register");
-      return;
-    }
+//    if (inputHasErrors) {
+      HashMap<String, String> errors= new HashMap<>();
+//      Set up tags
+      if(username ==null || username.equalsIgnoreCase("")){
+          errors.put("username","The username is empty");
+      }
+//    }
+//    System.out.println(errors.size());
+//    System.out.println(username);
+//    return;
+      if(errors.size()!=0) {
+        request.setAttribute("errors", errors);
+      request.getRequestDispatcher("/WEB-INF/register.jsp")
+                .forward(request, response);
+      }else {
 
-    // encrypt / hash the password
+//         encrypt / hash the password
 
-    int numberOfRounds = 12;
-    String hash = BCrypt.hashpw(password, BCrypt.gensalt(numberOfRounds));
+        int numberOfRounds = 12;
+        String hash = BCrypt.hashpw(password, BCrypt.gensalt(numberOfRounds));
 
-    // create and save a new user
-    User user = new User(username, email, firstName, lastName, streetAddress, state, zipcode, phone, hash);
-    DaoFactory.getUsersDao().insert(user);
-    response.sendRedirect("/login");
-
+//         create and save a new user
+        User user = new User(username, email, firstName, lastName, streetAddress, state, zipcode, phone, hash);
+        DaoFactory.getUsersDao().insert(user);
+        response.sendRedirect("/login");
+      }
 
   }
 }
