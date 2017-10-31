@@ -36,16 +36,12 @@
 
 </nav>
 
-
 <script type="text/javascript">
-
-
-
 document.getElementById('button-search').addEventListener('click', function(){
     var searchBox = document.getElementById('search').value;
     window.location.replace("/search?searchTerms="+searchBox);
     console.log(searchBox);
     return searchBox;
-
 });
+
 </script>

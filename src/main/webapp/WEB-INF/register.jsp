@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <jsp:include page="partials/head.jsp">
@@ -7,13 +8,18 @@
     </jsp:include>
 </head>
 <body>
+
+
+
+
     <jsp:include page="partials/navbar.jsp" />
     <div class="container">
         <h1>Please fill in your information.</h1>
-        <form action="/register" method="post">
+        <form action="/register" method="post" name="register">
             <div class="form-group">
                 <label for="username">Username</label>
-                <input id="username" name="username" class="form-control" type="text">
+                <input id="username" name="username" class="form-control" onblur="checkExist()"><span id="isE">test</span>
+
             </div>
             <c:if test="${errors.get('username')!=null}">
                 <div class="alert alert-danger" role="alert">
@@ -162,5 +168,36 @@
             <input type="submit" class="btn btn-primary btn-block">
         </form>
     </div>
+    <script>
+        function checkExist(){
+            var username = document.getElementById("username").value;
+
+            $.ajax({
+                url: '/exists?username=' + username,
+                data: {
+                    format: 'json'
+                },
+                error: function() {
+                    $('#isE').html('<p>An error has occurred</p>');
+                },
+                dataType: 'json',
+                type: 'GET'
+            }).done (function(data) {
+                console.log(data);
+                //postsjson = $.parseJSON(data);
+
+                if (data.exists === 1) {
+                    $('#isE').css('color', 'red').html('User already exists. Please choose another. :-(');
+                }else {
+                    $('#isE').css('color', 'green').html('That username is available! :-)');
+                }
+                //console.log(postsjson);
+
+            });
+        }
+
+
+
+    </script>
 </body>
 </html>
