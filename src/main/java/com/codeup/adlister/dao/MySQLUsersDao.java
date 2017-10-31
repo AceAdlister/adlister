@@ -1,9 +1,11 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
+import java.util.List;
 
 public class MySQLUsersDao implements Users {
     private Connection connection;
@@ -21,18 +23,34 @@ public class MySQLUsersDao implements Users {
         }
     }
 
-
     @Override
-    public User findByUsername(String username) {
-        String query = "SELECT * FROM users WHERE username = ? LIMIT 1";
-        try {
-            PreparedStatement stmt = connection.prepareStatement(query);
+    public User findByUsername(String username){
+      System.out.println("From mysqluserdao" + username);
+        PreparedStatement stmt = null;
+        try{
+            stmt = connection.prepareStatement("SELECT * FROM users WHERE username = ?") ;
             stmt.setString(1, username);
-            return extractUser(stmt.executeQuery());
-        } catch (SQLException e) {
-            throw new RuntimeException("Error finding a user by username", e);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()){
+                return new User(
+                        rs.getLong("id"),
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("first_name"),
+                        rs.getString("last_name"),
+                        rs.getString("street_address"),
+                        rs.getString("state"),
+                        rs.getString("zip_code"),
+                        rs.getString("phone"),
+                        rs.getString("password")
+                );
+            }else{return null;}
+        }catch(SQLException e){
+            throw new RuntimeException("Error finding user by username", e);
         }
+
     }
+
 
     @Override
     public Long insert(User user) {
