@@ -12,6 +12,15 @@ import java.io.IOException;
 @WebServlet(name = "controllers.SearchServlet", urlPatterns = "/search")
 
 public class SearchServlet extends HttpServlet {
+  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    String searchTerms = request.getParameter("searchTerms");
+    request.setAttribute("ads", DaoFactory.getAdsDao().searchAds(searchTerms));
+    request.getRequestDispatcher("/WEB-INF/ads/search-results.jsp").forward(request, response);
+    System.out.println("Here are your Search Terms: " + searchTerms);
+    System.out.println(DaoFactory.getAdsDao().searchAds(searchTerms));
+  }
+
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     // If null return user to login page
@@ -20,14 +29,5 @@ public class SearchServlet extends HttpServlet {
       return;
 
     }
-  }
-
-  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    String searchTerms = request.getParameter("searchTerms");
-    request.setAttribute("ads", DaoFactory.getAdsDao().searchAds(searchTerms));
-    request.getRequestDispatcher("/WEB-INF/ads/search-results.jsp").forward(request, response);
-    System.out.println("Here are your Search Terms: " + searchTerms);
-    System.out.println(DaoFactory.getAdsDao().searchAds(searchTerms));
   }
 }

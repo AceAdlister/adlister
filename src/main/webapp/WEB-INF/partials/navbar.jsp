@@ -5,7 +5,7 @@
         <div class="navbar-header"><img src="/assets/images/blue_dog.png" width="45" height="45">
             <a class="navbar-brand" href="/ads">Trash Hound</a>
         </div>
-        <form class="navbar-form navbar-left">
+        <form action="/search" method="post" class="navbar-form navbar-left">
             <div class="form-group">
                 <input class="form-control" placeholder="Search" id="search">
             </div>
@@ -36,12 +36,12 @@
 
 </nav>
 
-<script type="text/javascript">
-document.getElementById('button-search').addEventListener('click', function(){
-    var searchBox = document.getElementById('search').value;
-    window.location.replace("/search?searchTerms="+searchBox);
-    console.log(searchBox);
-    return searchBox;
-});
+<%--<script type="text/javascript">--%>
+<%--document.getElementById('button-search').addEventListener('click', function(){--%>
+    <%--var searchBox = document.getElementById('search').value;--%>
+    <%--window.location.replace("/search?searchTerms="+searchBox);--%>
+    <%--console.log(searchBox);--%>
+    <%--return searchBox;--%>
+<%--});--%>
 
-</script>
+<%--</script>--%>
