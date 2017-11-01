@@ -8,7 +8,7 @@
     </jsp:include>
 </head>
 <body>
-
+<script src="/assets/js/user_validation.js"></script>
     <jsp:include page="partials/navbar.jsp" />
     <div class="container">
         <h1>Please fill in your information.</h1>
@@ -166,43 +166,5 @@
         </form>
     </div>
 
-
-    <script>
-        $( "#register" ).validate({
-            rules: {
-                phone: {
-                    required: true,
-                    minlength: 10,
-                    maxlength: 11
-                }
-            }
-        });
-
-        function checkExist(){
-            var username = document.getElementById("username").value;
-
-            $.ajax({
-                url: '/exists?username=' + username,
-                data: {
-                    format: 'json'
-                },
-                error: function() {
-                    $('#isE').html('<p>An error has occurred</p>');
-                },
-                dataType: 'json',
-                type: 'GET'
-            }).done (function(data) {
-                console.log(data);
-                //postsjson = $.parseJSON(data);
-
-                if (data.exists === 1) {
-                    $('#isE').css('color', 'red').html('User already exists. Please choose another. :-(');
-                }else {
-                    $('#isE').css('color', 'green').html('That username is available! :-)');
-                }
-
-            });
-        }
-    </script>
 </body>
 </html>
