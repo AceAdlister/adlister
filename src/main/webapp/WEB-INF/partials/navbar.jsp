@@ -5,11 +5,12 @@
         <div class="navbar-header"><img src="/assets/images/blue_dog.png" width="45" height="45">
             <a class="navbar-brand" href="/ads">Trash Hound</a>
         </div>
-        <form action="/search" method="post" class="navbar-form navbar-left">
+        <%%>
+        <form action="/search" method="POST" class="navbar-form navbar-left">
             <div class="form-group">
-                <input class="form-control" placeholder="Search" id="search">
+                <input class="form-control" placeholder="Search" id="search" name="searchTerm">
             </div>
-            <input type="submit" class="btn btn-default" id="button-search" value="Submit">
+            <input type="submit" class="btn btn-default" value="Search">
         </form>
         <ul class="nav navbar-nav navbar-right">
             <li>
