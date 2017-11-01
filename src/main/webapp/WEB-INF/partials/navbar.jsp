@@ -5,11 +5,12 @@
         <div class="navbar-header"><img src="/assets/images/blue_dog.png" width="45" height="45">
             <a class="navbar-brand" href="/ads">Trash Hound</a>
         </div>
-        <form class="navbar-form navbar-left">
+        <%%>
+        <form action="/search" method="POST" class="navbar-form navbar-left">
             <div class="form-group">
-                <input class="form-control" placeholder="Search" id="search">
+                <input class="form-control" placeholder="Search" id="search" name="searchTerm">
             </div>
-            <button type="button" class="btn btn-default" id="button-search">Submit</button>
+            <input type="submit" class="btn btn-default" value="Search">
         </form>
         <ul class="nav navbar-nav navbar-right">
             <li>
@@ -36,12 +37,12 @@
 
 </nav>
 
-<script type="text/javascript">
-document.getElementById('button-search').addEventListener('click', function(){
-    var searchBox = document.getElementById('search').value;
-    window.location.replace("/search?searchTerms="+searchBox);
-    console.log(searchBox);
-    return searchBox;
-});
+<%--<script type="text/javascript">--%>
+<%--document.getElementById('button-search').addEventListener('click', function(){--%>
+    <%--var searchBox = document.getElementById('search').value;--%>
+    <%--window.location.replace("/search?searchTerms="+searchBox);--%>
+    <%--console.log(searchBox);--%>
+    <%--return searchBox;--%>
+<%--});--%>
 
-</script>
+<%--</script>--%>
