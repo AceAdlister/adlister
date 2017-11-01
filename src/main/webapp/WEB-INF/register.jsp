@@ -154,6 +154,7 @@
                     </select>
                 </div>
             </div>
+            <br><br>
             <c:if test="${errors.get('state')!=null}">
                 <div class="alert alert-danger" role="alert">
                     <a href="#" class="alert-link">${errors.get("state")}</a>
