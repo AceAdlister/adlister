@@ -9,7 +9,7 @@
             <div class="form-group">
                 <input class="form-control" placeholder="Search" id="search">
             </div>
-            <button type="button" class="btn btn-default" id="button-search">Submit</button>
+            <input type="submit" class="btn btn-default" id="button-search" value="Submit">
         </form>
         <ul class="nav navbar-nav navbar-right">
             <li>
