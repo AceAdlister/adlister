@@ -8,38 +8,14 @@
     </jsp:include>
 </head>
 <body>
-
-<%  String username2="";
-    String first_name="";
-    String last_name="";
-    String email="";
-    String street_address="";
-    String zip_code="";
-    String state="";
-    String phone="";
-    String password="";
-    String confirm_password="";
-
-    username2 = request.getParameter("username");
-    first_name = request.getParameter("first_name");
-    last_name = request.getParameter("last_name");
-    email = request.getParameter("email");
-    street_address = request.getParameter("street_address");
-    zip_code = request.getParameter("zip_code");
-    state = request.getParameter("state");
-    phone = request.getParameter("phone");
-    password = request.getParameter("password");
-    confirm_password = request.getParameter("confirm_password");
-
-%>
-
+<script src="/assets/js/user_validation.js"></script>
     <jsp:include page="partials/navbar.jsp" />
     <div class="container">
         <h1>Please fill in your information.</h1>
         <form action="/register" method="post" name="register" id="register">
             <div class="form-group">
                 <label for="username">Username</label>
-                <input id="username" name="username" class="form-control" onblur="checkExist()" required><span id="isE" placeholder="<%=username2%>"></span>
+                <input id="username" name="username" class="form-control" onblur="checkExist()" required value="${param.username}"><span id="isE"></span>
 
             </div>
             <c:if test="${errors.get('username')!=null}">
@@ -49,7 +25,7 @@
             </c:if>
             <div class="form-group">
                 <label for="first_name">First Name</label>
-                <input id="first_name" name="first_name" class="form-control" type="text" required value="<%=first_name%>">
+                <input id="first_name" name="first_name" class="form-control" type="text" required value="${param.first_name}">
             </div>
             <c:if test="${errors.get('firstName')!=null}">
                 <div class="alert alert-danger" role="alert">
@@ -58,7 +34,7 @@
             </c:if>
             <div class="form-group">
                 <label for="last_name">Last Name</label>
-                <input id="last_name" name="last_name" class="form-control" type="text" required value="<%=last_name%>">
+                <input id="last_name" name="last_name" class="form-control" type="text" required value="${param.last_name}">
             </div>
             <c:if test="${errors.get('lastName')!=null}">
                 <div class="alert alert-danger" role="alert">
@@ -68,7 +44,7 @@
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input id="email" name="email" class="form-control" type="text" required value="<%=email%>">
+                <input id="email" name="email" class="form-control" type="text" required value="${param.email}">
             </div>
             <c:if test="${errors.get('email')!=null}">
                 <div class="alert alert-danger" role="alert">
@@ -78,7 +54,7 @@
 
             <div class="form-group">
                 <label for="street_address">Address</label>
-                <input id="street_address" name="street_address" class="form-control" type="text" required value="<%=street_address%>">
+                <input id="street_address" name="street_address" class="form-control" type="text" required value="${param.street_address}">
             </div>
             <c:if test="${errors.get('address')!=null}">
                 <div class="alert alert-danger" role="alert">
@@ -87,7 +63,7 @@
             </c:if>
             <div class="form-group">
                 <label for="zip_code">Zipcode(#####)</label>
-                <input id="zip_code" name="zip_code" class="form-control" type="text" required value="<%=zip_code%>">
+                <input id="zip_code" name="zip_code" class="form-control" type="text" required value="${param.zip_code}">
             </div>
             <c:if test="${errors.get('zipcode')!=null}">
                 <div class="alert alert-danger" role="alert">
@@ -97,7 +73,7 @@
             <div class="form-group">
                 <label for="state" class="col-sm-2 control-label">State</label>
                 <div class="col-sm-10">
-                    <select class="form-control" id="state" name="state" required value="<%=state%>">
+                    <select class="form-control" id="state" name="state" required value="${param.state}">
                         <option value="">N/A</option>
                         <option value="AK">Alaska</option>
                         <option value="AL">Alabama</option>
@@ -161,7 +137,7 @@
             </c:if>
             <div class="form-group">
                 <label for="phone">Phone Number(##########)</label>
-                <input id="phone" name="phone" class="form-control" type="text" required value="<%=phone%>">
+                <input id="phone" name="phone" class="form-control" type="text" required value="${param.phone}">
             </div>
             <c:if test="${errors.get('phone')!=null}">
                 <div class="alert alert-danger" role="alert">
@@ -170,7 +146,7 @@
             </c:if>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input id="password" name="password" class="form-control" type="password" required value="<%=password%>">
+                <input id="password" name="password" class="form-control" type="password" required value="${param.password}">
             </div>
             <c:if test="${errors.get('password')!=null}">
                 <div class="alert alert-danger" role="alert">
@@ -179,7 +155,7 @@
             </c:if>
             <div class="form-group">
                 <label for="confirm_password">Confirm Password</label>
-                <input id="confirm_password" name="confirm_password" class="form-control" type="password" required value="<%=confirm_password%>">
+                <input id="confirm_password" name="confirm_password" class="form-control" type="password" required value="${param.confirm_password}">
             </div>
             <c:if test="${errors.get('nomatch')!=null}">
                 <div class="alert alert-danger" role="alert">
@@ -190,43 +166,5 @@
         </form>
     </div>
 
-
-    <script>
-        $( "#register" ).validate({
-            rules: {
-                phone: {
-                    required: true,
-                    minlength: 10,
-                    maxlength: 11
-                }
-            }
-        });
-
-        function checkExist(){
-            var username = document.getElementById("username").value;
-
-            $.ajax({
-                url: '/exists?username=' + username,
-                data: {
-                    format: 'json'
-                },
-                error: function() {
-                    $('#isE').html('<p>An error has occurred</p>');
-                },
-                dataType: 'json',
-                type: 'GET'
-            }).done (function(data) {
-                console.log(data);
-                //postsjson = $.parseJSON(data);
-
-                if (data.exists === 1) {
-                    $('#isE').css('color', 'red').html('User already exists. Please choose another. :-(');
-                }else {
-                    $('#isE').css('color', 'green').html('That username is available! :-)');
-                }
-
-            });
-        }
-    </script>
 </body>
 </html>
