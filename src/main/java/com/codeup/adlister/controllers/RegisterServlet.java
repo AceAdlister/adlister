@@ -48,14 +48,17 @@ public class RegisterServlet extends HttpServlet {
 //      Set up tags
     if(username ==null || username.equalsIgnoreCase("")){
       errors.put("username","The username is empty.");
+      request.setAttribute("username", "");
     }
 
     if(firstName==null ||firstName.equalsIgnoreCase("")){
       errors.put("firstName","The First Name is empty.");
+      firstName = "";
     }
 
     if(lastName==null || lastName.equalsIgnoreCase("")){
       errors.put("lastName","The Last Name is empty.");
+      lastName = "";
     }
 
     if(email ==null || email.equalsIgnoreCase("")){
