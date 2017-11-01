@@ -32,67 +32,63 @@ public class RegisterServlet extends HttpServlet {
     String passwordConfirmation = request.getParameter("confirm_password");
 
 
-    // validate input
-//    boolean inputHasErrors = username.isEmpty()
-//            || email.isEmpty()
-//            || firstName.isEmpty()
-//            || lastName.isEmpty()
-//            || streetAddress.isEmpty()
-//            || state.isEmpty()
-//            || (zipcode.isEmpty() || zipcode.length()!=5)
-//            || (phone.isEmpty() || phone.length()!=10)
-//            || password.isEmpty()
-//            || (!password.equals(passwordConfirmation));
-
     HashMap<String, String> errors= new HashMap<>();
 //      Set up tags
     if(username ==null || username.equalsIgnoreCase("")){
       errors.put("username","The username is empty.");
+      username = "";
     }
 
     if(firstName==null ||firstName.equalsIgnoreCase("")){
       errors.put("firstName","The First Name is empty.");
+      firstName = "";
     }
 
     if(lastName==null || lastName.equalsIgnoreCase("")){
       errors.put("lastName","The Last Name is empty.");
+      lastName = "";
     }
 
     if(email ==null || email.equalsIgnoreCase("")){
       errors.put("email","The email is empty.");
+      email = "";
     }else if (!email.contains("@")){
       errors.put("email","The email does not have a valid domain.");
     }
 
     if(streetAddress==null || streetAddress.equalsIgnoreCase("")){
       errors.put("address","The Street Address is empty.");
+      streetAddress="";
     }
 
     if(state==null || state.equalsIgnoreCase("")){
       errors.put("state","The State was not selected");
+      state="";
     }
 
     if(zipcode==null || zipcode.equalsIgnoreCase("")){
       errors.put("zipcode","The Zipcode is empty.");
+      zipcode="";
     }else if(zipcode.length()!=5 && isNotNumeric(zipcode)){
       errors.put("zipcode","The Zipcode is not 5 numbers.");
     }
 
     if(phone==null || phone.equalsIgnoreCase("")){
       errors.put("phone","The Phone Number is empty.");
+      phone="";
     }else if(phone.length()!=10 && isNotNumeric(phone)){
       errors.put("phone","The Phone Number is not 10 numbers.");
     }
 
     if(password==null ||password.equalsIgnoreCase("")){
+      password = "";
       errors.put("password","The Password is empty");
     }
 
     if(!password.equals(passwordConfirmation)){
       errors.put("nomatch","The Passwords do not match.");
+      passwordConfirmation="";
     }
-
-
 
 //      forward tags
     if(errors.size()!=0) {
