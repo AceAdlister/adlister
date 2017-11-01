@@ -13,13 +13,7 @@ import java.io.IOException;
 
 public class SearchServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         request.getRequestDispatcher("/WEB-INF/partials/navbar.jsp").forward(request, response);
-
-//        String searchTerms = request.getParameter("searchTerms");
-//        request.setAttribute("ads", DaoFactory.getAdsDao().searchAds(searchTerms));
-//        request.getRequestDispatcher("/WEB-INF/ads/search-results.jsp").forward(request, response);
-//
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
