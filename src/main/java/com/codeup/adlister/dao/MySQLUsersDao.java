@@ -97,9 +97,8 @@ public class MySQLUsersDao implements Users {
     }
 
     private User extractUser(ResultSet rs) throws SQLException {
-        if (! rs.next()) {
-            return null;
-        }
+//         rs.next() is does one thing and returns another. It returns a boolean, is there a next row. It also steps the registry by one.
+        rs.next();
         return new User(
             rs.getLong("id"),
             rs.getString("username"),
